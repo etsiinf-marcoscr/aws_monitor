@@ -33,7 +33,7 @@ if log_groups_df.empty:
     st.info(f"No se encontraron grupos de logs con el prefijo `{prefix}`." if prefix else "No se encontraron grupos de logs.")
     st.stop()
 
-st.dataframe(log_groups_df, hide_index=True, use_container_width=True)
+st.dataframe(log_groups_df, hide_index=True, width='stretch')
 
 selected_group = st.selectbox(
     "Selecciona un Grupo de Logs",
@@ -48,7 +48,7 @@ if streams_df.empty:
     st.info("No se encontraron flujos de logs para este grupo.")
     st.stop()
 
-st.dataframe(streams_df, hide_index=True, use_container_width=True)
+st.dataframe(streams_df, hide_index=True, width='stretch')
 
 selected_stream = st.selectbox(
     "Selecciona un Flujo de Logs",
@@ -126,7 +126,7 @@ styled = events_df.style.apply(_row_style, axis=1)
 st.dataframe(
     styled,
     hide_index=True,
-    use_container_width=True,
+    width='stretch',
     column_config={
         "Fecha": st.column_config.TextColumn("Fecha", width="small"),
         "Nivel":     st.column_config.TextColumn("Nivel",     width="small"),
